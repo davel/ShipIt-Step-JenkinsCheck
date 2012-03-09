@@ -7,7 +7,7 @@ use base qw/ ShipIt::Step /;
 use JSON qw/ decode_json /;
 use LWP::UserAgent;
 use Try::Tiny;
-use Term::ReadLine;
+use ShipIt::Util qw/ $term /;
 
 sub init {
     my ($self, $conf) = @_;
@@ -49,15 +49,13 @@ sub run {
     my ($self, $state) = @_;
     my @results;
 
-    my $rl = Term::ReadLine->new("ShipIt::Step::JenkinsCheck");
-
     try {
         @results = $self->check_tests($self->{url}, @{ $self->{jobs} });
     }
     catch {
         my $err = $_;
         while (1) {
-            my $line = $rl->readline("Jenkins check failed with $err, continue build? (y/n)");
+            my $line = $term->readline("Jenkins check failed with $err, continue build? (y/n)");
             die "build aborted" if $line =~ /^n/i;
             last if $line =~ /^y/i;
         }
@@ -73,7 +71,7 @@ sub run {
     }
 
     while (1) {
-        my $line = $rl->readline("Jenkins has failing builds, continue build? (y/n)");
+        my $line = $term->readline("Jenkins has failing builds, continue build? (y/n)");
         die "build aborted" if $line =~ /^n/i;
         last if $line =~ /^y/i;
     }
