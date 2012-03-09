@@ -16,4 +16,9 @@ WriteMakefile(
     },
     ABSTRACT_FROM  => 'lib/ShipIt/Step/JenkinsCheck.pm', # retrieve abstract from module
     AUTHOR         => 'Dave Lambley <davel@state51.co.uk>',
+    META_MERGE => {
+        resources => {
+            repository => 'https://github.com/davel/ShipIt-Step-JenkinsCheck',
+        }
+    },
 );
