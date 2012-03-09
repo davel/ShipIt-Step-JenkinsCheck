@@ -1,4 +1,4 @@
-libshipit-step-jenkinscheck (0.01) lucid; urgency=low
+libshipit-step-jenkinscheck-perl (0.01) lucid; urgency=low
 
   * Initial release.
 
