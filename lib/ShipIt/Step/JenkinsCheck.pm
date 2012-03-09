@@ -71,7 +71,7 @@ sub run {
     }
 
     while (1) {
-        my $line = $term->readline("Jenkins has failing builds, continue build? (y/n)");
+        my $line = $term->readline("Jenkins reports trouble, continue build? (y/n)");
         die "build aborted" if $line =~ /^n/i;
         last if $line =~ /^y/i;
     }
