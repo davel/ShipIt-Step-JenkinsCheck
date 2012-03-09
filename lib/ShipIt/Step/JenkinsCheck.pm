@@ -9,6 +9,8 @@ use LWP::UserAgent;
 use Try::Tiny;
 use ShipIt::Util qw/ $term /;
 
+our $VERSION = '0.01';
+
 sub init {
     my ($self, $conf) = @_;
     $self->{url} = $conf->value('JenkinsCheck.url');
