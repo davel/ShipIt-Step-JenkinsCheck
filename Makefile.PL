@@ -14,7 +14,6 @@ WriteMakefile(
     BUILD_REQUIRES => {
         'Test::More'        => 0,
     },
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/ShipIt/Step/JenkinsCheck.pm', # retrieve abstract from module
-       AUTHOR         => 'Dave Lambley <davel@state51.co.uk>') : ()),
+    ABSTRACT_FROM  => 'lib/ShipIt/Step/JenkinsCheck.pm', # retrieve abstract from module
+    AUTHOR         => 'Dave Lambley <davel@state51.co.uk>',
 );
