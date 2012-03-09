@@ -11,11 +11,11 @@ use Term::ReadLine;
 
 sub init {
     my ($self, $conf) = @_;
-    $self->{url} = $conf->{url};
-    $self->{jobs} = [ split /,/, $conf->{jobs} ];
+    $self->{url} = $conf->value('JenkinsCheck.url');
+    $self->{jobs} = [ split /,/, $conf->value('JenkinsCheck.jobs') ];
 
     die "No Jenkins URL specified" unless $self->{url};
-    die "No Jenkins jobs specified" unless { $self->{jobs} };
+    die "No Jenkins jobs specified" unless @{ $self->{jobs} };
     return;
 }
 
