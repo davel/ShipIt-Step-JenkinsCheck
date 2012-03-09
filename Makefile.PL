@@ -10,6 +10,7 @@ WriteMakefile(
         'JSON'              => 0,
         'Term::ReadLine'    => 0,
         'Try::Tiny'         => 0,
+        'ShipIt::Step'      => 0,
     },
     BUILD_REQUIRES => {
         'Test::More'        => 0,
