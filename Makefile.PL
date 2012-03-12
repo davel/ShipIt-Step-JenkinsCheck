@@ -8,7 +8,6 @@ WriteMakefile(
     PREREQ_PM         => {
         'LWP::UserAgent'    => 0,
         'JSON'              => 0,
-        'Term::ReadLine'    => 0,
         'Try::Tiny'         => 0,
         'ShipIt::Step'      => 0,
     },
