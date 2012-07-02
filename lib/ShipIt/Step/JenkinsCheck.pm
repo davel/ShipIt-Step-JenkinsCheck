@@ -56,10 +56,9 @@ sub run {
     }
     catch {
         my $err = $_;
-            my $ans = bool_prompt("Jenkins check failed with $err, continue build?", "y");
-            die "build aborted" if !$ans;
-            last if $line =~ /^y/i;
-        }
+        my $ans = bool_prompt("Jenkins check failed with $err, continue build?", "y");
+        die "build aborted" if !$ans;
+        last if $line =~ /^y/i;
     };
 
     unless (@results) {
@@ -71,10 +70,8 @@ sub run {
         print "$r\n";
     }
 
-    while (1) {
-        my $ans = bool_prompt("Jenkins reports trouble, continue build?", "y");
-        die "build aborted" if !$ans;
-    }
+    my $ans = bool_prompt("Jenkins reports trouble, continue build?", "y");
+    die "build aborted" if !$ans;
     return;
 }
 
