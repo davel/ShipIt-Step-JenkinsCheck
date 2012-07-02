@@ -58,7 +58,6 @@ sub run {
         my $err = $_;
         my $ans = bool_prompt("Jenkins check failed with $err, continue build?", "y");
         die "build aborted" if !$ans;
-        last if $line =~ /^y/i;
     };
 
     unless (@results) {
