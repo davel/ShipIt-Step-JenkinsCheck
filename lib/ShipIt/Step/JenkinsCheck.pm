@@ -7,9 +7,9 @@ use base qw/ ShipIt::Step /;
 use JSON qw/ decode_json /;
 use LWP::UserAgent;
 use Try::Tiny;
-use ShipIt::Util qw/ $term /;
+use ShipIt::Util qw/ bool_prompt /;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub init {
     my ($self, $conf) = @_;
@@ -56,9 +56,8 @@ sub run {
     }
     catch {
         my $err = $_;
-        while (1) {
-            my $line = $term->readline("Jenkins check failed with $err, continue build? (y/n)");
-            die "build aborted" if $line =~ /^n/i;
+            my $ans = bool_prompt("Jenkins check failed with $err, continue build?", "y");
+            die "build aborted" if !$ans;
             last if $line =~ /^y/i;
         }
     };
@@ -73,9 +72,8 @@ sub run {
     }
 
     while (1) {
-        my $line = $term->readline("Jenkins reports trouble, continue build? (y/n)");
-        die "build aborted" if $line =~ /^n/i;
-        last if $line =~ /^y/i;
+        my $ans = bool_prompt("Jenkins reports trouble, continue build?", "y");
+        die "build aborted" if !$ans;
     }
     return;
 }

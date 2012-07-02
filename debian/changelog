@@ -1,3 +1,9 @@
+libshipit-step-jenkinscheck-perl (0.02) lucid; urgency=low
+
+  * Default to allowing builds.
+
+ -- Dave Lambley <davel@state51.co.uk>  Mon, 02 Jul 2012 21:18:05 +0000
+
 libshipit-step-jenkinscheck-perl (0.01) lucid; urgency=low
 
   * Initial release.
